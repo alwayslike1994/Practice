@@ -32,6 +32,7 @@ public class heapSort {
      */
     public static void heapify(int[] arr, int index, int heapSize) {
         int left = 2 * index + 1;
+        //这里是O(logN)
         while (left < heapSize) {
             //如果有右孩子，且右孩子比较大，最大的为右孩子，记录其下标。否则是其左孩子。
             int largest = left + 1 <= heapSize && arr[left] < arr[left + 1] ? left + 1 : left;
@@ -54,7 +55,7 @@ public class heapSort {
             heapInsert(arr, i);
         }
         int heapSize = arr.length - 1;
-        //那么当前arr[0]是最大的。
+        //那么当前arr[0]是最大的。这里是O(N)。
         while (heapSize >= 0) {
             swap(arr, 0, heapSize--);//把最大的放在最后，且heapSize减1
             heapify(arr, 0, heapSize);
